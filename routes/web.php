@@ -35,14 +35,14 @@ Route::get('/',function(){
 
 Route::prefix('admin')->namespace('Auth\Admin')->group(function(){
 
-	 // Authentication Routes...
+	 // Authentication Routes Admin...
      Route::get('login','LoginController@showLoginForm')->name('admin.login');
      Route::post('login','LoginController@login');
      Route::post('logout','LoginController@logout')->name('admin.logout');
 
-     // Registration Routes...
-     Route::get('register','RegisterController@showRegistrationForm')->name('admin.register');
-     Route::post('register','RegisterController@register');
+     // // Registration Routes Admin...
+     // Route::get('register','RegisterController@showRegistrationForm')->name('admin.register');
+     // Route::post('register','RegisterController@register');
 
 });
 
