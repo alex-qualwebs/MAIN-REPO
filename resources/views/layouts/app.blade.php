@@ -64,15 +64,39 @@
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="#">{{ __('Register') }}</a>
                                 </li>
+                                <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                  
+                                    
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="admin/register"
+                                     >
+                                        {{ __('Admin') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('register') }}"
+                                     >
+                                        {{ __('User') }}
+                                    </a>
+
+                                    
+                                </div>
+                            </li>
+
                          
                             @endif
                         @else
-                    <img style="border-radius:50%;width:50px;height:50px"  src=" {{ asset('public/image/'.$data[0]->img) }}">
+                       
+                       @if($data[0]->email_verified_at)
+                       <img style="border-radius:50%;width:50px;height:50px"  src="{{ asset('public/image/'.$data[0]->img) }}">
+                       @endif
+                        
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ decrypt(Auth::user()->name) }} <span class="caret"></span>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

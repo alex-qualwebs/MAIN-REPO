@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Auth\Admin;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Foundation\Auth\redirectPath;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -57,7 +58,8 @@ class RegisterController extends Controller
         }
 
         
-            return redirect()->route('adminview');
+           
+        return redirect('/admin/dashboard');
 
     }
 
@@ -124,7 +126,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => encrypt($data['name']),
+            'name' => $data['name'],
             'role_id' => 1,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

@@ -40,16 +40,16 @@ Route::prefix('admin')->namespace('Auth\Admin')->group(function(){
      Route::post('login','LoginController@login');
      Route::post('logout','LoginController@logout')->name('admin.logout');
 
-     // // Registration Routes Admin...
-     // Route::get('register','RegisterController@showRegistrationForm')->name('admin.register');
-     // Route::post('register','RegisterController@register');
+     // Registration Routes Admin...
+     Route::get('register','RegisterController@showRegistrationForm')->name('admin.register');
+     Route::post('register','RegisterController@register');
 
 });
 
  //redirect to admin dashboard
 Route::prefix('admin')->namespace('Admin')->group(function(){
 
-	Route::get('dashboard','Dashboardcontroller@index')->name('adminview')->middleware('auth:admin','verified');
+	Route::get('dashboard','Dashboardcontroller@index')->name('adminview')->middleware('auth:admin');
 
 });
 
@@ -58,14 +58,17 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
 Route::prefix('user')->namespace('User')->group(function(){
 
 	Route::get('dashboard','Dashboardcontroller@index')->name('userview')->middleware('auth:user','verified');
-
+  Route::get('upload','Dashboardcontroller@show')->middleware('auth:user');
 
 });
+
+
+
+
 
 //image upload
 Route::post('user/upload','HomeController@upload');
 Route::post('admin/upload','AdminController@upload');
 
 Auth::routes(['verify' => true]);
-
 // Route::get('/home', 'HomeController@index')->name('home');

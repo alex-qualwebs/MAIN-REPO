@@ -3,38 +3,37 @@
 @section('content')
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">User Dashboard</div>
-
-                <div class="panel-body">
-                    You are logged in!
-                </div>
-                <div class="card">
-                     @if(session('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-            <div class="card-header">
-                <h1>Upload image</h1>
-            </div>
-            <div class="card-body">
-                <div class="form">
-               <form method="post" action="upload" enctype="multipart/form-data">
-                @csrf
-                {{  $errors->first('uploadfile') }}
-                <input type="file" name="uploadfile" class="form-control">
-                <br>
-                <input type="submit" value="Upload" class="btn btn-success btn-lg">
-                </form>
-                </div>
-            </div>
-        </div>
-            </div>
-        </div>
+<div class="container  well">
+    <div class="card">
+    <div class="card-header text-center bg-dark text-white">
+        <h1>Welcome To User Dashboard</h1>
+    </div>
+    
+        <div class="cardbody jumbotron">
+            <div style="float:right;">
+        <a href="upload" class="btn btn-success btn-lg">Upload Image</a>
+    </div>
+            <table class="table">
+                <thead>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>EMAIL</th>
+                    <th>ROLE</th>
+                </thead>
+                @foreach($data as $users)
+                <tbody>
+                    <tr>
+                        <td>{{$users->id}}</td>
+                        <td>{{$users->name}}</td>
+                        <td>{{$users->email}}</td>
+                        <td>{{$users->nickname }}</td>
+                    </tr>
+                </tbody>
+                @endforeach
+            </table>
+          {{ $data->links() }}
+               </div>
+   
     </div>
 </div>
 
