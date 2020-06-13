@@ -13,25 +13,36 @@
             <div style="float:right;">
         <a href="upload" class="btn btn-success btn-lg">Upload Image</a>
     </div>
-            <table class="table">
+      <div style="float:left;">
+        <a href="menu" class="btn btn-success btn-lg">ORDER-MENU</a>
+    </div>
+            <table class="table table-hover">
                 <thead>
-                    <th>ID</th>
+                    <th>SR.</th>
                     <th>NAME</th>
                     <th>EMAIL</th>
-                    <th>ROLE</th>
+                    <th>CITY</th>
+                    <th>PHONE</th>
+                    <th>COUNTRY</th>
                 </thead>
-                @foreach($data as $users)
+                @php $x=1; @endphp
+                @foreach($users as $user)
                 <tbody>
-                    <tr>
-                        <td>{{$users->id}}</td>
-                        <td>{{$users->name}}</td>
-                        <td>{{$users->email}}</td>
-                        <td>{{$users->nickname }}</td>
+                   
+                    <tr> 
+                        <td>{{ $x }}</td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->Profile->city}}</td>
+                        <td>{{$user->Profile->phone}}</td>
+                        <td>{{$user->Profile->Contry->name}}</td>
                     </tr>
+                 
                 </tbody>
+                @php $x++; @endphp
                 @endforeach
             </table>
-          {{ $data->links() }}
+         
                </div>
    
     </div>

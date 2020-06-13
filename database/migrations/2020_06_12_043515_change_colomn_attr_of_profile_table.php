@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameMobileColomnForAdminTable extends Migration
+class ChangeColomnAttrOfProfileTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class RenameMobileColomnForAdminTable extends Migration
      */
     public function up()
     {
-        Schema::table('admins', function (Blueprint $table) {
+        Schema::table('userprofiles', function (Blueprint $table) {
             
-             $table->renameColumn('mobile','phone_number');
+            $table->string('city')->change();
         });
     }
 
@@ -26,9 +26,10 @@ class RenameMobileColomnForAdminTable extends Migration
      */
     public function down()
     {
-        Schema::table('admins', function (Blueprint $table) {
+        Schema::table('userprofiles', function (Blueprint $table) {
             
-             $table->renameColumn('phone_number','mobile');
+           $table->int('city')->change();
+
         });
     }
 }

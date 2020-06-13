@@ -90,9 +90,7 @@
                             @endif
                         @else
                        
-                       @if($data[0]->email_verified_at)
-                       <img style="border-radius:50%;width:50px;height:50px"  src="{{ asset('public/image/'.$data[0]->img) }}">
-                       @endif
+                      
                         
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

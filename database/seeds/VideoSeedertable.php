@@ -1,8 +1,9 @@
 <?php
 
+use App\Video;
 use Illuminate\Database\Seeder;
 
-class AdminSeedeertable extends Seeder
+class VideoSeedertable extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +12,6 @@ class AdminSeedeertable extends Seeder
      */
     public function run()
     {
-        factory(App\Admin::class, 50)->create();
-
+        factory(App\Video::class,10)->create();
     }
 }

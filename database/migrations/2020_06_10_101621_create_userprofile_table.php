@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeAttrOfPhoneInAdminTable extends Migration
+class CreateUserProfileTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class ChangeAttrOfPhoneInAdminTable extends Migration
      */
     public function up()
     {
-        Schema::table('admins', function (Blueprint $table) {
-            
-            $table->string('phone_number')->change();
+        Schema::create('userprofiles', function (Blueprint $table) {
+            $table->id();
+            $table->BigInteger('user_id');
+            $table->string('phone');
+            $table->integer('city');
+            $table->timestamps();
         });
     }
 
@@ -26,9 +29,6 @@ class ChangeAttrOfPhoneInAdminTable extends Migration
      */
     public function down()
     {
-        Schema::table('admins', function (Blueprint $table) {
-            
-            $table->integer('phone_number')->change();
-        });
+        Schema::dropIfExists('userprofiles');
     }
 }

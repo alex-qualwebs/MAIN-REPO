@@ -59,7 +59,10 @@ Route::prefix('user')->namespace('User')->group(function(){
 
 	Route::get('dashboard','Dashboardcontroller@index')->name('userview')->middleware('auth:user','verified');
   Route::get('upload','Dashboardcontroller@show')->middleware('auth:user');
-
+  Route::get('menu','Dashboardcontroller@menu')->middleware('auth:user')->name('show_menu');
+  Route::get('menu_edit/{id}','Dashboardcontroller@editshow')->middleware('auth:user');
+  Route::post('menu_edit/update','Dashboardcontroller@update')->middleware('auth:user');
+  Route::get('menu_delete/{id}','Dashboardcontroller@delete')->middleware('auth:user');
 });
 
 
