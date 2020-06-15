@@ -211,9 +211,82 @@ class Dashboardcontroller extends Controller
        
        // // dd($users);
 
+         
+
+       // $data = DB::table('users')
+       //              ->join('userprofiles','users.id','=','userprofiles.user_id')
+       //              ->join('contries','contries.id','=','userprofiles.contry_id')
+       //              ->where('users.id','<>',1)
+       //              ->orwhere('contries.id','<>',1)
+       //              ->orderBy('users.id','DESC')
+       //              ->get()->toArray();
 
 
-		$users = User::with('Profile.Contry:user_id,name','Roles')->get();
+       
+       // $data = DB::table('comments')
+       //              ->join('orders','users.id','=','orders.user_id')
+       //              ->get()->toArray();
+
+       
+
+         // $users = DB::table('users')
+         //            ->select('roles.id AS role_id','users.name AS user_name', 'roles.name AS role_name','users.id AS user_id','city','phone','contries.name AS contry_name','email')
+         //            ->join('role_user','users.id','=','role_user.user_id')
+         //            ->join('roles','roles.id','=','role_user.role_id')
+         //            ->join('userprofiles','users.id','=','userprofiles.user_id')
+         //            ->join('contries','contries.id','=','userprofiles.contry_id')
+         //            ->where('role_user.role_id','=','2')
+         //            ->orwhere('role_user.role_id','=','1')
+         //            ->get()->toArray();
+
+
+                    // dd($users);
+       
+
+        // using Union and Union All we can add two queries together
+		//   $first = DB::table('roles')
+		//           ->where('id',2);
+
+		// $data = DB::table('roles')
+		//             ->where('id',1)
+		//             ->unionAll($first)
+		//             ->get();
+
+		//         echo "<pre>";
+		//         print_r($data);
+
+   
+     //row queries           
+    // $data = DB::select('select * from orders where user_id = ?',[2]);
+
+    // $data = DB::insert('insert into roles (name) values(?)',["private"]);
+
+       
+    //   $contry = 1;
+
+    // $users = DB::table('users')
+    //               ->Join('userprofiles','users.id','=','userprofiles.user_id')
+    //              ->rightJoin('contries','userprofiles.contry_id','=','contries.id')
+    //               ->when($contry,function($query,$contry){
+
+    //               	 return $query->where('contry_id',$contry);
+    //               })
+    //               ->get();
+
+
+    //               dd($users);
+       
+
+       //CROSS-JOIN
+
+		 // $users = DB::table('users')
+   //                     ->crossJoin('userprofiles')
+   //                     ->get()->toArray();
+
+   //                dd($users);
+
+
+		// $users = User::with('Profile.Contry:user_id,name')->get();
 
 		  return view('user.dashboard',compact('users'));
 
